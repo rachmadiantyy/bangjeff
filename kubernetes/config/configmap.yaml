@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bangjeff-env-service
+  namespace: bangjeff-dev
+data:
+  ENV: "DEV"
+  JWT_DURATION: "2h"
+
+  CONFIG_KEY: "dev_config_bangjeff.com.json"
+  CONFIG_URL: "https://cdn.bangjeff.com/dev_config_bangjeff.com.json"
+
+  RECAPTCHA_SECRET_KEY: "${RECAPTCHA_SECRET_KEY}"
+
+  MAIN_SERVICE: "api-service:9090"
+  CALLBACK_SERVICE: "callback-service:9090"
+  PROCESSOR_SERVICE: "processor-service:9090"
+  QUEUE_SERVICE: "queue-service:9090"
+  REALTIME_SERVICE: "realtime-service:9090"
+  VALIDATOR_SERVICE: "10.104.0.70:9090"
+  CORE_SERVICE: "10.104.0.186:9090"
+
+  DB_MAXCONNECTION: "5"
+
+  REDIS_URL: "${REDIS_URL}"
+  VALIDATOR_REDIS_URL: "${VALIDATOR_REDIS_URL}"
+
+  BUCKET_PROVIDER: "S3"
+  S3_BUCKET: "cdn.bangjeff.com"
+  S3_BUCKET_URL: "https://cdn.bangjeff.com/"
+
+  NEXT_PUBLIC_FE_URL: "https://staging.bangjeff.com"
+  NEXT_PUBLIC_BE_URL: "https://staging-api.bangjeff.com/v3"
+  NEXT_PUBLIC_RECAPTHA_SITE_KEY: "${NEXT_PUBLIC_RECAPTHA_SITE_KEY}"
+  NEXT_PUBLIC_SOCKET_URL: "https://echo.bangjeff.com"
+
+  NEXT_PUBLIC_FE_URL_ADMIN: "https://staging-admin.bangjeff.com"
+  NEXT_PUBLIC_BE_URL_ADMIN: "https://staging-api.bangjeff.com"
+  NEXT_PUBLIC_WS_URL: "https://echo.bangjeff.com"
+  NEXT_PUBLIC_MAIN_WEBSITE_URL: "https://staging.bangjeff.com"
