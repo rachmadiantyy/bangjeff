@@ -16,8 +16,6 @@ spec:
         app: admin-service
         role: web
     spec:
-      imagePullSecrets:
-        - name: do-regcred
       containers:
         - name: admin-service
           image: registry.digitalocean.com/bangjeff/admin-service:latest

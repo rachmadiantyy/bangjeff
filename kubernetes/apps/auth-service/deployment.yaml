@@ -14,8 +14,6 @@ spec:
         app: auth-service
         role: web
     spec:
-      imagePullSecrets:
-        - name: do-regcred
       containers:
         - name: auth-service
           image: registry.digitalocean.com/bangjeff/auth-service:latest

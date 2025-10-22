@@ -14,8 +14,6 @@ spec:
         app: supplier-service
         role: web
     spec:
-      imagePullSecrets:
-        - name: do-regcred
       containers:
         - name: supplier-service
           image: registry.digitalocean.com/bangjeff/supplier-service:latest

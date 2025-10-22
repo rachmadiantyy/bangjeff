@@ -14,8 +14,6 @@ spec:
         app: catalog-service
         role: web
     spec:
-      imagePullSecrets:
-        - name: do-regcred
       containers:
         - name: catalog-service
           image: registry.digitalocean.com/bangjeff/catalog-service:latest

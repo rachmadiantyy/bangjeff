@@ -14,8 +14,6 @@ spec:
         app: reseller-service
         role: web
     spec:
-      imagePullSecrets:
-        - name: do-regcred
       containers:
         - name: reseller-service
           image: registry.digitalocean.com/bangjeff/reseller-service:latest

@@ -14,8 +14,6 @@ spec:
         app: user-service
         role: web
     spec:
-      imagePullSecrets:
-        - name: do-regcred
       containers:
         - name: user-service
           image: registry.digitalocean.com/bangjeff/user-service:latest
