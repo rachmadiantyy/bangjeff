@@ -22,7 +22,7 @@ spec:
             - containerPort: 9090
           envFrom:
             - configMapRef:
-                name: root-app-mitra--env-service
+                name: bangjeff-env-service
 ---
 apiVersion: v1
 kind: Service
