@@ -3,8 +3,6 @@ kind: Deployment
 metadata:
   name: admin-service
   namespace: bangjeff-dev
-  labels:
-    app: admin-service
 spec:
   replicas: 2
   selector:
@@ -14,13 +12,17 @@ spec:
     metadata:
       labels:
         app: admin-service
-        role: web
     spec:
+      imagePullSecrets:
+        - name: do-regcred
       containers:
         - name: admin-service
           image: registry.digitalocean.com/bangjeff/admin-service:latest
           ports:
             - containerPort: 9090
+          envFrom:
+            - configMapRef:
+                name: root-app-mitra--env-service
 ---
 apiVersion: v1
 kind: Service
@@ -33,3 +35,4 @@ spec:
   ports:
     - port: 80
       targetPort: 9090
+  type: ClusterIP

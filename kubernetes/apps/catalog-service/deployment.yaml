@@ -12,13 +12,17 @@ spec:
     metadata:
       labels:
         app: catalog-service
-        role: web
     spec:
+      imagePullSecrets:
+        - name: do-regcred
       containers:
         - name: catalog-service
           image: registry.digitalocean.com/bangjeff/catalog-service:latest
           ports:
             - containerPort: 9090
+          envFrom:
+            - configMapRef:
+                name: root-app-mitra--env-service
 ---
 apiVersion: v1
 kind: Service
@@ -31,3 +35,4 @@ spec:
   ports:
     - port: 80
       targetPort: 9090
+  type: ClusterIP
