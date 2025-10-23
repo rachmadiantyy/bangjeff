@@ -23,6 +23,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: bangjeff-env-service
+            - secretRef:
+                name: root-app-bangjeff--secrets
 ---
 apiVersion: v1
 kind: Service
