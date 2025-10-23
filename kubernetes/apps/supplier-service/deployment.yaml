@@ -19,7 +19,7 @@ spec:
         - name: supplier-service
           image: registry.digitalocean.com/bangjeff/supplier-service:latest
           ports:
-            - containerPort: 9090
+            - containerPort: 3000
           envFrom:
             - configMapRef:
                 name: bangjeff-env-service
@@ -36,5 +36,5 @@ spec:
     app: supplier-service
   ports:
     - port: 80
-      targetPort: 9090
+      targetPort: 3000
   type: ClusterIP
