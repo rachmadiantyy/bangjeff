@@ -1,21 +1,55 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: bangjeff-api-ingress
+  name: bangjeff-ingress
   namespace: bangjeff-dev
   annotations:
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
-    - host: api.bangjeff.id
+    - host: api.bangjeff.id   # ganti di sini dari 'bangjeff.id'
       http:
         paths:
-          - path: /v3/?(.*)
-            pathType: ImplementationSpecific
+          - path: /auth
+            pathType: Prefix
             backend:
               service:
-                name: core-service
+                name: auth-service
+                port:
+                  number: 80
+          - path: /admin
+            pathType: Prefix
+            backend:
+              service:
+                name: admin-service
+                port:
+                  number: 80
+          - path: /catalog
+            pathType: Prefix
+            backend:
+              service:
+                name: catalog-service
+                port:
+                  number: 80
+          - path: /reseller
+            pathType: Prefix
+            backend:
+              service:
+                name: reseller-service
+                port:
+                  number: 80
+          - path: /supplier
+            pathType: Prefix
+            backend:
+              service:
+                name: supplier-service
+                port:
+                  number: 80
+          - path: /user
+            pathType: Prefix
+            backend:
+              service:
+                name: user-service
                 port:
                   number: 80
