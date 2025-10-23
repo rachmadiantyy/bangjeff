@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: api.bangjeff.id   
+    - host: dev-api.bangjeff.com   
       http:
         paths:
           - path: /auth
