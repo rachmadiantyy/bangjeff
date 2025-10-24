@@ -4,52 +4,52 @@ metadata:
   name: bangjeff-ingress
   namespace: bangjeff-dev
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   ingressClassName: nginx
   rules:
-    - host: dev-api.bangjeff.com   
-      http:
-        paths:
-          - path: /auth
-            pathType: Prefix
-            backend:
-              service:
-                name: auth-service
-                port:
-                  number: 80
-          - path: /admin
-            pathType: Prefix
-            backend:
-              service:
-                name: admin-service
-                port:
-                  number: 80
-          - path: /catalog
-            pathType: Prefix
-            backend:
-              service:
-                name: catalog-service
-                port:
-                  number: 80
-          - path: /reseller
-            pathType: Prefix
-            backend:
-              service:
-                name: reseller-service
-                port:
-                  number: 80
-          - path: /supplier
-            pathType: Prefix
-            backend:
-              service:
-                name: supplier-service
-                port:
-                  number: 80
-          - path: /user
-            pathType: Prefix
-            backend:
-              service:
-                name: user-service
-                port:
-                  number: 80
+  - host: dev-api.bangjeff.com
+    http:
+      paths:
+      - path: /auth(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: auth-service
+            port:
+              number: 80
+      - path: /admin(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: admin-service
+            port:
+              number: 80
+      - path: /catalog(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: catalog-service
+            port:
+              number: 80
+      - path: /reseller(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: reseller-service
+            port:
+              number: 80
+      - path: /supplier(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: supplier-service
+            port:
+              number: 80
+      - path: /user(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: user-service
+            port:
+              number: 80
