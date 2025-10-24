@@ -4,50 +4,51 @@ metadata:
   name: bangjeff-ingress
   namespace: bangjeff-dev
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   ingressClassName: nginx
   rules:
   - host: dev-api.bangjeff.com
     http:
       paths:
-      - path: /auth(/|$)(.*)
-        pathType: Prefix
+      - path: /auth/?(.*)
+        pathType: ImplementationSpecific
         backend:
           service:
             name: auth-service
             port:
               number: 80
-      - path: /admin(/|$)(.*)
-        pathType: Prefix
+      - path: /admin/?(.*)
+        pathType: ImplementationSpecific
         backend:
           service:
             name: admin-service
             port:
               number: 80
-      - path: /catalog(/|$)(.*)
-        pathType: Prefix
+      - path: /catalog/?(.*)
+        pathType: ImplementationSpecific
         backend:
           service:
             name: catalog-service
             port:
               number: 80
-      - path: /reseller(/|$)(.*)
-        pathType: Prefix
+      - path: /reseller/?(.*)
+        pathType: ImplementationSpecific
         backend:
           service:
             name: reseller-service
             port:
               number: 80
-      - path: /supplier(/|$)(.*)
-        pathType: Prefix
+      - path: /supplier/?(.*)
+        pathType: ImplementationSpecific
         backend:
           service:
             name: supplier-service
             port:
               number: 80
-      - path: /user(/|$)(.*)
-        pathType: Prefix
+      - path: /user/?(.*)
+        pathType: ImplementationSpecific
         backend:
           service:
             name: user-service
