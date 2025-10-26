@@ -19,6 +19,10 @@ data:
   REALTIME_SERVICE: "realtime-service:9090"
   VALIDATOR_SERVICE: "10.104.0.70:9090"
   CORE_SERVICE: "10.104.0.186:9090"
+  
+  ADMIN_SERVICE_URL: "admin-service:9090"
+  USER_SERVICE_URL: "user-service:9090"
+  RESELLER_SERVICE_URL: "reseller-service:9090"
 
   DB_MAXCONNECTION: "5"
 
