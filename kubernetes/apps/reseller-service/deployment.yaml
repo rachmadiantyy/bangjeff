@@ -20,7 +20,7 @@ spec:
           image: registry.digitalocean.com/bangjeff/reseller-service:latest
           ports:
             - containerPort: 3000
-            - containerPort: 9094
+            - containerPort: 9090
           envFrom:
             - configMapRef:
                 name: bangjeff-env-service
@@ -40,6 +40,6 @@ spec:
       port: 80
       targetPort: 3000
     - name: grpc
-      port: 9094
-      targetPort: 9094
+      port: 9090
+      targetPort: 9090
   type: ClusterIP

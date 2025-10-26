@@ -38,6 +38,3 @@ data:
   NEXT_PUBLIC_BE_URL_ADMIN: "https://staging-api.bangjeff.com"
   NEXT_PUBLIC_WS_URL: "https://echo.bangjeff.com"
   NEXT_PUBLIC_MAIN_WEBSITE_URL: "https://staging.bangjeff.com"
-  ADMIN_SERVICE_URL: "admin-service:9092"
-  USER_SERVICE_URL: "user-service:9093"
-  RESELLER_SERVICE_URL: "reseller-service:9094"
