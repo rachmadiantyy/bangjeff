@@ -28,11 +28,11 @@ spec:
             - secretRef:
                 name: root-app-bangjeff--secrets
           env:
-            - name: ADMIN_SERVICE_URL
+            - name: ADMIN_SERVICE_HOST
               value: "admin-service:9092"
-            - name: USER_SERVICE_URL
+            - name: USER_SERVICE_HOST
               value: "user-service:9093"
-            - name: RESELLER_SERVICE_URL
+            - name: RESELLER_SERVICE_HOST
               value: "reseller-service:9094"
 ---
 apiVersion: v1
