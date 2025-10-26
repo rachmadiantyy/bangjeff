@@ -11,7 +11,6 @@ metadata:
     nginx.ingress.kubernetes.io/cors-allow-headers: "Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, Authorization, X-Requested-With"
     nginx.ingress.kubernetes.io/cors-expose-headers: "X-Requested-With"
     nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   ingressClassName: nginx
   rules:
@@ -19,16 +18,8 @@ spec:
     http:
       paths:
         # AUTH SERVICE
-        - path: /auth/docs
+        - path: /auth
           pathType: Prefix
-          backend:
-            service:
-              name: auth-service
-              port:
-                number: 80
-        
-        - path: /auth/(.*)
-          pathType: ImplementationSpecific
           backend:
             service:
               name: auth-service
@@ -36,8 +27,8 @@ spec:
                 number: 80
 
         # ADMIN SERVICE
-        - path: /admin/(.*)
-          pathType: ImplementationSpecific
+        - path: /admin
+          pathType: Prefix
           backend:
             service:
               name: admin-service
@@ -45,8 +36,8 @@ spec:
                 number: 80
 
         # USER SERVICE
-        - path: /user/(.*)
-          pathType: ImplementationSpecific
+        - path: /user
+          pathType: Prefix
           backend:
             service:
               name: user-service
@@ -54,8 +45,8 @@ spec:
                 number: 80
 
         # RESELLER SERVICE
-        - path: /reseller/(.*)
-          pathType: ImplementationSpecific
+        - path: /reseller
+          pathType: Prefix
           backend:
             service:
               name: reseller-service
@@ -63,8 +54,8 @@ spec:
                 number: 80
 
         # CATALOG SERVICE
-        - path: /catalog/(.*)
-          pathType: ImplementationSpecific
+        - path: /catalog
+          pathType: Prefix
           backend:
             service:
               name: catalog-service
@@ -72,8 +63,8 @@ spec:
                 number: 80
 
         # SUPPLIER SERVICE
-        - path: /supplier/(.*)
-          pathType: ImplementationSpecific
+        - path: /supplier
+          pathType: Prefix
           backend:
             service:
               name: supplier-service
