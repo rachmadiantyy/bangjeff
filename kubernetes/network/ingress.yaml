@@ -11,7 +11,7 @@ metadata:
     nginx.ingress.kubernetes.io/cors-allow-headers: "Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, Authorization, X-Requested-With"
     nginx.ingress.kubernetes.io/cors-expose-headers: "X-Requested-With"
     nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /api/v3/$2
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   ingressClassName: nginx
   rules:
@@ -19,42 +19,7 @@ spec:
     http:
       paths:
         # AUTH SERVICE
-        - path: /auth
-          pathType: Prefix
-          backend:
-            service:
-              name: auth-service
-              port:
-                number: 80
-        - path: /auth/docs
-          pathType: Prefix
-          backend:
-            service:
-              name: auth-service
-              port:
-                number: 80
-        - path: /auth/healthcheck
-          pathType: Prefix
-          backend:
-            service:
-              name: auth-service
-              port:
-                number: 80
-        - path: /backoffice
-          pathType: Prefix
-          backend:
-            service:
-              name: auth-service
-              port:
-                number: 80
-        - path: /v1/user
-          pathType: Prefix
-          backend:
-            service:
-              name: auth-service
-              port:
-                number: 80
-        - path: /v1/reseller
+        - path: /auth(/|$)(.*)
           pathType: Prefix
           backend:
             service:
@@ -63,28 +28,7 @@ spec:
                 number: 80
 
         # ADMIN SERVICE
-        - path: /admin
-          pathType: Prefix
-          backend:
-            service:
-              name: admin-service
-              port:
-                number: 80
-        - path: /admin/docs
-          pathType: Prefix
-          backend:
-            service:
-              name: admin-service
-              port:
-                number: 80
-        - path: /admin/healthcheck
-          pathType: Prefix
-          backend:
-            service:
-              name: admin-service
-              port:
-                number: 80
-        - path: /backoffice/admin
+        - path: /admin(/|$)(.*)
           pathType: Prefix
           backend:
             service:
@@ -93,28 +37,7 @@ spec:
                 number: 80
 
         # USER SERVICE
-        - path: /user
-          pathType: Prefix
-          backend:
-            service:
-              name: user-service
-              port:
-                number: 80
-        - path: /user/docs
-          pathType: Prefix
-          backend:
-            service:
-              name: user-service
-              port:
-                number: 80
-        - path: /user/healthcheck
-          pathType: Prefix
-          backend:
-            service:
-              name: user-service
-              port:
-                number: 80
-        - path: /backoffice/user
+        - path: /user(/|$)(.*)
           pathType: Prefix
           backend:
             service:
@@ -123,28 +46,7 @@ spec:
                 number: 80
 
         # RESELLER SERVICE
-        - path: /reseller
-          pathType: Prefix
-          backend:
-            service:
-              name: reseller-service
-              port:
-                number: 80
-        - path: /reseller/docs
-          pathType: Prefix
-          backend:
-            service:
-              name: reseller-service
-              port:
-                number: 80
-        - path: /reseller/healthcheck
-          pathType: Prefix
-          backend:
-            service:
-              name: reseller-service
-              port:
-                number: 80
-        - path: /backoffice/reseller
+        - path: /reseller(/|$)(.*)
           pathType: Prefix
           backend:
             service:
@@ -153,49 +55,7 @@ spec:
                 number: 80
 
         # CATALOG SERVICE
-        - path: /catalog
-          pathType: Prefix
-          backend:
-            service:
-              name: catalog-service
-              port:
-                number: 80
-        - path: /catalog/docs
-          pathType: Prefix
-          backend:
-            service:
-              name: catalog-service
-              port:
-                number: 80
-        - path: /catalog/healthcheck
-          pathType: Prefix
-          backend:
-            service:
-              name: catalog-service
-              port:
-                number: 80
-        - path: /backoffice/category
-          pathType: Prefix
-          backend:
-            service:
-              name: catalog-service
-              port:
-                number: 80
-        - path: /backoffice/product
-          pathType: Prefix
-          backend:
-            service:
-              name: catalog-service
-              port:
-                number: 80
-        - path: /backoffice/product-section
-          pathType: Prefix
-          backend:
-            service:
-              name: catalog-service
-              port:
-                number: 80
-        - path: /backoffice/product-variant
+        - path: /catalog(/|$)(.*)
           pathType: Prefix
           backend:
             service:
@@ -204,28 +64,7 @@ spec:
                 number: 80
 
         # SUPPLIER SERVICE
-        - path: /supplier
-          pathType: Prefix
-          backend:
-            service:
-              name: supplier-service
-              port:
-                number: 80
-        - path: /supplier/docs
-          pathType: Prefix
-          backend:
-            service:
-              name: supplier-service
-              port:
-                number: 80
-        - path: /supplier/healthcheck
-          pathType: Prefix
-          backend:
-            service:
-              name: supplier-service
-              port:
-                number: 80
-        - path: /backoffice/supplier
+        - path: /supplier(/|$)(.*)
           pathType: Prefix
           backend:
             service:
