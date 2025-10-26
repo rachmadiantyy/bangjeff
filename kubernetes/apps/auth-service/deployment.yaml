@@ -20,6 +20,7 @@ spec:
           image: registry.digitalocean.com/bangjeff/auth-service:latest
           ports:
             - containerPort: 3000
+            - containerPort: 9092
           envFrom:
             - configMapRef:
                 name: bangjeff-env-service
