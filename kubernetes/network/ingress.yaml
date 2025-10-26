@@ -19,15 +19,15 @@ spec:
             port:
               number: 80
 
-      - path: /admin
+      - path: /backoffice
         pathType: Prefix
         backend:
           service:
-            name: admin-service
+            name: auth-service
             port:
               number: 80
 
-      - path: /backoffice
+      - path: /admin
         pathType: Prefix
         backend:
           service:
