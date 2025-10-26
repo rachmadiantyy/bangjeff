@@ -5,21 +5,22 @@ metadata:
   namespace: bangjeff-dev
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, Authorization, X-Requested-With"
+    nginx.ingress.kubernetes.io/cors-expose-headers: "X-Requested-With"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
 spec:
   ingressClassName: nginx
   rules:
   - host: dev-api.bangjeff.com
     http:
       paths:
-        # AUTH
+        # =========================
+        # Auth Service
+        # =========================
         - path: /auth
-          pathType: Prefix
-          backend:
-            service:
-              name: auth-service
-              port:
-                number: 80
-        - path: /backoffice/auth
           pathType: Prefix
           backend:
             service:
@@ -40,8 +41,31 @@ spec:
               name: auth-service
               port:
                 number: 80
+        - path: /backoffice
+          pathType: Prefix
+          backend:
+            service:
+              name: auth-service
+              port:
+                number: 80
+        - path: /v1/user
+          pathType: Prefix
+          backend:
+            service:
+              name: auth-service
+              port:
+                number: 80
+        - path: /v1/reseller
+          pathType: Prefix
+          backend:
+            service:
+              name: auth-service
+              port:
+                number: 80
 
-        # ADMIN
+        # =========================
+        # Admin Service
+        # =========================
         - path: /admin
           pathType: Prefix
           backend:
@@ -49,7 +73,14 @@ spec:
               name: admin-service
               port:
                 number: 80
-        - path: /backoffice
+        - path: /admin/healthcheck
+          pathType: Prefix
+          backend:
+            service:
+              name: admin-service
+              port:
+                number: 80
+        - path: /admin/docs
           pathType: Prefix
           backend:
             service:
@@ -64,8 +95,24 @@ spec:
               port:
                 number: 80
 
-        # USER
+        # =========================
+        # User Service
+        # =========================
         - path: /user
+          pathType: Prefix
+          backend:
+            service:
+              name: user-service
+              port:
+                number: 80
+        - path: /user/healthcheck
+          pathType: Prefix
+          backend:
+            service:
+              name: user-service
+              port:
+                number: 80
+        - path: /user/docs
           pathType: Prefix
           backend:
             service:
@@ -80,7 +127,41 @@ spec:
               port:
                 number: 80
 
-        # CATALOG
+        # =========================
+        # Reseller Service
+        # =========================
+        - path: /reseller
+          pathType: Prefix
+          backend:
+            service:
+              name: reseller-service
+              port:
+                number: 80
+        - path: /reseller/healthcheck
+          pathType: Prefix
+          backend:
+            service:
+              name: reseller-service
+              port:
+                number: 80
+        - path: /reseller/docs
+          pathType: Prefix
+          backend:
+            service:
+              name: reseller-service
+              port:
+                number: 80
+        - path: /backoffice/reseller
+          pathType: Prefix
+          backend:
+            service:
+              name: reseller-service
+              port:
+                number: 80
+
+        # =========================
+        # Catalog Service
+        # =========================
         - path: /catalog
           pathType: Prefix
           backend:
@@ -88,7 +169,14 @@ spec:
               name: catalog-service
               port:
                 number: 80
-        - path: /backoffice/catalog
+        - path: /catalog/healthcheck
+          pathType: Prefix
+          backend:
+            service:
+              name: catalog-service
+              port:
+                number: 80
+        - path: /catalog/docs
           pathType: Prefix
           backend:
             service:
@@ -124,8 +212,24 @@ spec:
               port:
                 number: 80
 
-        # SUPPLIER
+        # =========================
+        # Supplier Service
+        # =========================
         - path: /supplier
+          pathType: Prefix
+          backend:
+            service:
+              name: supplier-service
+              port:
+                number: 80
+        - path: /supplier/healthcheck
+          pathType: Prefix
+          backend:
+            service:
+              name: supplier-service
+              port:
+                number: 80
+        - path: /supplier/docs
           pathType: Prefix
           backend:
             service:
@@ -137,21 +241,5 @@ spec:
           backend:
             service:
               name: supplier-service
-              port:
-                number: 80
-
-        # RESELLER
-        - path: /reseller
-          pathType: Prefix
-          backend:
-            service:
-              name: reseller-service
-              port:
-                number: 80
-        - path: /backoffice/reseller
-          pathType: Prefix
-          backend:
-            service:
-              name: reseller-service
               port:
                 number: 80
