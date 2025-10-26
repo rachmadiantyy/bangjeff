@@ -18,13 +18,22 @@ spec:
       containers:
         - name: auth-service
           image: registry.digitalocean.com/bangjeff/auth-service:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
+              protocol: TCP
           envFrom:
             - configMapRef:
                 name: bangjeff-env-service
             - secretRef:
                 name: root-app-bangjeff--secrets
+          env:
+            - name: ADMIN_SERVICE_URL
+              value: "admin-service:9090"
+            - name: USER_SERVICE_URL
+              value: "user-service:9090"
+            - name: RESELLER_SERVICE_URL
+              value: "reseller-service:9090"
 ---
 apiVersion: v1
 kind: Service
