@@ -19,6 +19,14 @@ spec:
     http:
       paths:
         # AUTH SERVICE
+        - path: /auth/docs
+          pathType: Prefix
+          backend:
+            service:
+              name: auth-service
+              port:
+                number: 80
+        
         - path: /auth/(.*)
           pathType: ImplementationSpecific
           backend:
