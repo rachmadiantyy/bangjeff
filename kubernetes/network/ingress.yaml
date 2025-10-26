@@ -41,17 +41,31 @@ spec:
               name: auth-service
               port:
                 number: 80
-
-        # =========================
-        # Admin / Backoffice Service
-        # =========================
         - path: /backoffice
           pathType: Prefix
           backend:
             service:
-              name: admin-service
+              name: auth-service
               port:
                 number: 80
+        - path: /v1/user
+          pathType: Prefix
+          backend:
+            service:
+              name: auth-service
+              port:
+                number: 80
+        - path: /v1/reseller
+          pathType: Prefix
+          backend:
+            service:
+              name: auth-service
+              port:
+                number: 80
+
+        # =========================
+        # Admin Service
+        # =========================
         - path: /admin
           pathType: Prefix
           backend:
@@ -67,6 +81,13 @@ spec:
               port:
                 number: 80
         - path: /admin/docs
+          pathType: Prefix
+          backend:
+            service:
+              name: admin-service
+              port:
+                number: 80
+        - path: /backoffice/admin
           pathType: Prefix
           backend:
             service:
@@ -98,6 +119,13 @@ spec:
               name: user-service
               port:
                 number: 80
+        - path: /backoffice/user
+          pathType: Prefix
+          backend:
+            service:
+              name: user-service
+              port:
+                number: 80
 
         # =========================
         # Reseller Service
@@ -117,6 +145,13 @@ spec:
               port:
                 number: 80
         - path: /reseller/docs
+          pathType: Prefix
+          backend:
+            service:
+              name: reseller-service
+              port:
+                number: 80
+        - path: /backoffice/reseller
           pathType: Prefix
           backend:
             service:
@@ -148,6 +183,34 @@ spec:
               name: catalog-service
               port:
                 number: 80
+        - path: /backoffice/category
+          pathType: Prefix
+          backend:
+            service:
+              name: catalog-service
+              port:
+                number: 80
+        - path: /backoffice/product
+          pathType: Prefix
+          backend:
+            service:
+              name: catalog-service
+              port:
+                number: 80
+        - path: /backoffice/product-section
+          pathType: Prefix
+          backend:
+            service:
+              name: catalog-service
+              port:
+                number: 80
+        - path: /backoffice/product-variant
+          pathType: Prefix
+          backend:
+            service:
+              name: catalog-service
+              port:
+                number: 80
 
         # =========================
         # Supplier Service
@@ -167,6 +230,13 @@ spec:
               port:
                 number: 80
         - path: /supplier/docs
+          pathType: Prefix
+          backend:
+            service:
+              name: supplier-service
+              port:
+                number: 80
+        - path: /backoffice/supplier
           pathType: Prefix
           backend:
             service:
