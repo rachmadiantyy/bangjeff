@@ -19,8 +19,10 @@ spec:
         - name: admin-service
           image: registry.digitalocean.com/bangjeff/admin-service:latest
           ports:
-            - containerPort: 3000
-            - containerPort: 9090
+            - name: http
+              containerPort: 3000
+            - name: grpc
+              containerPort: 9092
           envFrom:
             - configMapRef:
                 name: bangjeff-env-service
@@ -40,6 +42,6 @@ spec:
       port: 80
       targetPort: 3000
     - name: grpc
-      port: 9090
-      targetPort: 9090
+      port: 9092
+      targetPort: 9092
   type: ClusterIP
