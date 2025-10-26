@@ -11,58 +11,147 @@ spec:
   - host: dev-api.bangjeff.com
     http:
       paths:
-      - path: /auth
-        pathType: Prefix
-        backend:
-          service:
-            name: auth-service
-            port:
-              number: 80
+        # AUTH
+        - path: /auth
+          pathType: Prefix
+          backend:
+            service:
+              name: auth-service
+              port:
+                number: 80
+        - path: /backoffice/auth
+          pathType: Prefix
+          backend:
+            service:
+              name: auth-service
+              port:
+                number: 80
+        - path: /auth/healthcheck
+          pathType: Prefix
+          backend:
+            service:
+              name: auth-service
+              port:
+                number: 80
+        - path: /auth/docs
+          pathType: Prefix
+          backend:
+            service:
+              name: auth-service
+              port:
+                number: 80
 
-      - path: /backoffice
-        pathType: Prefix
-        backend:
-          service:
-            name: auth-service
-            port:
-              number: 80
+        # ADMIN
+        - path: /admin
+          pathType: Prefix
+          backend:
+            service:
+              name: admin-service
+              port:
+                number: 80
+        - path: /backoffice
+          pathType: Prefix
+          backend:
+            service:
+              name: admin-service
+              port:
+                number: 80
+        - path: /backoffice/admin
+          pathType: Prefix
+          backend:
+            service:
+              name: admin-service
+              port:
+                number: 80
 
-      - path: /admin
-        pathType: Prefix
-        backend:
-          service:
-            name: admin-service
-            port:
-              number: 80
+        # USER
+        - path: /user
+          pathType: Prefix
+          backend:
+            service:
+              name: user-service
+              port:
+                number: 80
+        - path: /backoffice/user
+          pathType: Prefix
+          backend:
+            service:
+              name: user-service
+              port:
+                number: 80
 
-      - path: /catalog
-        pathType: Prefix
-        backend:
-          service:
-            name: catalog-service
-            port:
-              number: 80
+        # CATALOG
+        - path: /catalog
+          pathType: Prefix
+          backend:
+            service:
+              name: catalog-service
+              port:
+                number: 80
+        - path: /backoffice/catalog
+          pathType: Prefix
+          backend:
+            service:
+              name: catalog-service
+              port:
+                number: 80
+        - path: /backoffice/category
+          pathType: Prefix
+          backend:
+            service:
+              name: catalog-service
+              port:
+                number: 80
+        - path: /backoffice/product
+          pathType: Prefix
+          backend:
+            service:
+              name: catalog-service
+              port:
+                number: 80
+        - path: /backoffice/product-section
+          pathType: Prefix
+          backend:
+            service:
+              name: catalog-service
+              port:
+                number: 80
+        - path: /backoffice/product-variant
+          pathType: Prefix
+          backend:
+            service:
+              name: catalog-service
+              port:
+                number: 80
 
-      - path: /reseller
-        pathType: Prefix
-        backend:
-          service:
-            name: reseller-service
-            port:
-              number: 80
+        # SUPPLIER
+        - path: /supplier
+          pathType: Prefix
+          backend:
+            service:
+              name: supplier-service
+              port:
+                number: 80
+        - path: /backoffice/supplier
+          pathType: Prefix
+          backend:
+            service:
+              name: supplier-service
+              port:
+                number: 80
 
-      - path: /supplier
-        pathType: Prefix
-        backend:
-          service:
-            name: supplier-service
-            port:
-              number: 80
-
-      - path: /user
-        pathType: Prefix
-        backend:
-          service:
-            name: user-service
-            port:
-              number: 80
+        # RESELLER
+        - path: /reseller
+          pathType: Prefix
+          backend:
+            service:
+              name: reseller-service
+              port:
+                number: 80
+        - path: /backoffice/reseller
+          pathType: Prefix
+          backend:
+            service:
+              name: reseller-service
+              port:
+                number: 80
